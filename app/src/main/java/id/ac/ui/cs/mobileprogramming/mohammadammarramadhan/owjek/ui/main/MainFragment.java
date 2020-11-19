@@ -1,7 +1,6 @@
 package id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.ui.main;
 
-import androidx.lifecycle.ViewModelProviders;
-
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.owride.OWRIDEActivity;
 import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.R;
 
 public class MainFragment extends Fragment {
@@ -20,7 +20,19 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+        View view = inflater.inflate(R.layout.main_fragment, container, false);
+
+        View owride_btn = view.findViewById(R.id.ow_ride);
+        owride_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), OWRIDEActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        return view;
+
     }
 
 }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".FirstFragment">
+    tools:context=".owride.OWRIDEFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -62,7 +62,7 @@
         android:orientation="vertical"
         android:padding="16dp"
         android:translationY="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/confirm"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
         app:layout_constraintStart_toStartOf="@+id/linearLayout3"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
@@ -89,7 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="TextView"
+                android:text="5.2 Km"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -115,7 +116,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="TextView"
+                android:text="Rp 10.000"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -123,7 +125,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/confirm"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
