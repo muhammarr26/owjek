@@ -126,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="TextView"
+                android:text="5.2 Km"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -148,12 +148,12 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/price"
+                android:id="@+id/fare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="end"
-                android:text="TextView"
+                android:text="Rp 10.000"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold" />

@@ -3,6 +3,7 @@
     package="id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek">
 
     <application
+        android:name=".OWJEK"
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="@string/app_name"
@@ -23,6 +24,7 @@
             android:label="@string/owride_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+        <service android:name="id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.owride.model.service.OWRIDEService" android:enabled="true"></service>
     </application>
 
 </manifest>

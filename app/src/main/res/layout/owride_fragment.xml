@@ -28,13 +28,13 @@
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/from"
+            android:id="@+id/from_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/from_placeholder"
-            android:textColor="@android:color/darker_gray" />
+            android:hint="@string/from_placeholder"
+            android:inputType="textLongMessage|text"
+            android:textColor="@android:color/black" />
 
         <TextView
             android:id="@+id/textView2"
@@ -44,13 +44,13 @@
             android:textColor="@android:color/black" />
 
         <EditText
-            android:id="@+id/to"
+            android:id="@+id/to_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/to_placeholder"
-            android:textColor="@android:color/darker_gray" />
+            android:hint="@string/to_placeholder"
+            android:inputType="textLongMessage|text"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
     <LinearLayout
@@ -111,7 +111,7 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/price"
+                android:id="@+id/fare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
