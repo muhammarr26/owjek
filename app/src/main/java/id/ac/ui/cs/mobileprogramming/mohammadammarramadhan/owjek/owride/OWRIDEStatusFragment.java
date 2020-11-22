@@ -22,6 +22,7 @@ import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.owride.model.OW
 public class OWRIDEStatusFragment extends Fragment {
 
     private LiveData<OWRIDEModel> latestHistory;
+    private Observer<OWRIDEModel> observer;
 
     @Nullable
     @Override
@@ -32,14 +33,15 @@ public class OWRIDEStatusFragment extends Fragment {
         OWRIDEViewModel mOWRIDEViewModel = new ViewModelProvider(getActivity()).get(OWRIDEViewModel.class);
         latestHistory = mOWRIDEViewModel.getLatestHistory();
 
-        latestHistory.observe(getActivity(), new Observer<OWRIDEModel>() {
+        observer = new Observer<OWRIDEModel>() {
             @Override
             public void onChanged(OWRIDEModel history) {
                 ((TextView) view.findViewById(R.id.from)).setText(history.getFrom());
                 ((TextView) view.findViewById(R.id.to)).setText(history.getTo());
                 ((TextView) view.findViewById(R.id.status)).setText(convertStatus(history.getStatus()));
             }
-        });
+        };
+        latestHistory.observe(getActivity(), observer);
 
         View cancel = view.findViewById(R.id.cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +62,18 @@ public class OWRIDEStatusFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        ((OWRIDEActivity) getActivity()).fetchService();
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        latestHistory.removeObserver(observer);
     }
 
     String convertStatus(int status){

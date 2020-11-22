@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">OW-JEK</string>
+    <string name="title_activity_main">OWJEK</string>
+    <string name="owride_activity_main">OWRIDE</string>
+
+    <string name="from_title">Pick-up point</string>
+    <string name="from_placeholder">Pick-up address</string>
+    <string name="to_title">Destination point</string>
+    <string name="to_placeholder">Destination address</string>
+    <string name="distance_title">Distance</string>
+    <string name="price_title">Fare</string>
+    <string name="history">History</string>
+
+    <string name="status_owride_1">Towards the pick-up point..</string>
+    <string name="status_owride_2">Towards the destination point..</string>
+    <string name="status_owride_3">Arrived!</string>
+    <string name="estimated">"estimation time
+%d second"</string>
+
+    <string name="confirm">Order OWRIDE</string>
+    <string name="cancel">Cancel Order</string>
+    <string name="confirmation_message">Are you sure want to cancel?</string>
+
+</resources>

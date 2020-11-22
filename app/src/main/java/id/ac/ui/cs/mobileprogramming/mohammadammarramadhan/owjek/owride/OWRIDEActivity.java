@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import java.util.Map;
 
+import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.MainActivity;
 import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.R;
 import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.owride.model.service.OWRIDEService;
 
@@ -37,6 +38,22 @@ public class OWRIDEActivity extends AppCompatActivity {
             mBound = true;
             if (owrideService.isRunning()) handler.postDelayed(runnable, 1);
             Log.println(Log.INFO, "OWRIDE", "service bounded");
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            //Create instance of your Fragment
+            if(!owrideService.isRunning()) {
+                OWRIDEFragment fragment = new OWRIDEFragment();
+                fragmentTransaction.replace(R.id.frame_layout, fragment, "form");
+                fragmentTransaction.addToBackStack(null);
+            }else{
+                OWRIDEStatusFragment fragment = new OWRIDEStatusFragment();
+                fragmentTransaction.replace(R.id.frame_layout, fragment, "status");
+                fragmentTransaction.addToBackStack(null);
+            }
+            //Add Fragment instance to your Activity
+            fragmentTransaction.commit();
+
         }
 
         @Override
@@ -50,52 +67,69 @@ public class OWRIDEActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //Create instance of your Fragment
-        Fragment fragment = new OWRIDEFragment();
-        //Add Fragment instance to your Activity
-        fragmentTransaction.add(R.id.frame_layout, fragment);
-        fragmentTransaction.commit();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, OWRIDEService.class);
-        bindService(intent, connection, Context.BIND_AUTO_CREATE);
-        startService(intent);
+        if(!mBound){
+            Intent intent = new Intent(this, OWRIDEService.class);
+            bindService(intent, connection, Context.BIND_AUTO_CREATE);
+            startService(intent);
+        }
     }
 
     public void confirm() {
         OWRIDEStatusFragment status = new OWRIDEStatusFragment();
 
         owrideService.start();
-        handler.postDelayed(runnable, 1);
 
+        getSupportFragmentManager().popBackStack();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_layout, status);
+        transaction.replace(R.id.frame_layout, status, "status");
         transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
         transaction.addToBackStack(null);
         transaction.commit();
     }
 
     public void cancel() {
+        handler.removeCallbacks(runnable);
+        owrideService.cancel();
+
         getSupportFragmentManager().popBackStack();
+        OWRIDEFragment form = new OWRIDEFragment();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, form, "form");
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    public void fetchService(){
+        handler.postDelayed(runnable, 1);
     }
 
     Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            Map<String, Integer> result = owrideService.getProgress();
-            ((ProgressBar) findViewById(R.id.progress)).setProgress(result.get("progress"));
-            ((TextView) findViewById(R.id.estimated)).setText(
-                    getString(R.string.estimated, result.get("estimated"))
-            );
-            handler.postDelayed(this, 1);
+            Fragment fragment = getSupportFragmentManager().findFragmentByTag("status");
+            if(fragment != null && fragment.isVisible()) {
+                Map<String, Integer> result = owrideService.getProgress();
+                ((ProgressBar) findViewById(R.id.progress)).setProgress(result.get("progress"));
+                ((TextView) findViewById(R.id.estimated)).setText(
+                        getString(R.string.estimated, result.get("estimated"))
+                );
+                handler.postDelayed(this, 1);
+            }
         }
     };
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     protected void onStop() {
@@ -104,6 +138,5 @@ public class OWRIDEActivity extends AppCompatActivity {
         unbindService(connection);
         mBound = false;
         handler.removeCallbacks(runnable);
-
     }
 }

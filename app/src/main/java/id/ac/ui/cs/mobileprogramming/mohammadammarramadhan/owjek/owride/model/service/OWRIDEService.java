@@ -53,6 +53,7 @@ public class OWRIDEService extends Service {
 
     public void cancel() {
         owrideRepository.updateStatusOnLatestHistory(OWRIDEModel.CANCELLED);
+        t.cancel();
         stop();
     }
 
