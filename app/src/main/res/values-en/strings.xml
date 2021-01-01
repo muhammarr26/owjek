@@ -20,5 +20,8 @@
     <string name="confirm">Order OWRIDE</string>
     <string name="cancel">Cancel Order</string>
     <string name="confirmation_message">Are you sure want to cancel?</string>
+    <string name="driver_pickup">Your driver has arrived!</string>
+    <string name="arrive_at_location">You have arrived at location!
+Thank you for using OWJEK service :)</string>
 
 </resources>

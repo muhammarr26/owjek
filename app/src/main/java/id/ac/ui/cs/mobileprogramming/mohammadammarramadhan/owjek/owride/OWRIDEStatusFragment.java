@@ -30,6 +30,7 @@ public class OWRIDEStatusFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.owride_status_fragment, container, false);
 
+        // Mengambil instansi OWRIDEViewModel dengan Factory pattern
         OWRIDEViewModel mOWRIDEViewModel = new ViewModelProvider(getActivity()).get(OWRIDEViewModel.class);
         latestHistory = mOWRIDEViewModel.getLatestHistory();
 
@@ -43,6 +44,7 @@ public class OWRIDEStatusFragment extends Fragment {
         };
         latestHistory.observe(getActivity(), observer);
 
+        // Pembatalan order
         View cancel = view.findViewById(R.id.cancel);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override

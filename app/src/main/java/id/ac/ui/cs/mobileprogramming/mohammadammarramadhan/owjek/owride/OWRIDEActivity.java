@@ -39,19 +39,19 @@ public class OWRIDEActivity extends AppCompatActivity {
             if (owrideService.isRunning()) handler.postDelayed(runnable, 1);
             Log.println(Log.INFO, "OWRIDE", "service bounded");
 
+            /** Jika Activity ini dipanggil dari menu utama atau recent app,
+                Tampilkan status perjalanannya jika servicenya masih jalan **/
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            //Create instance of your Fragment
-            if(!owrideService.isRunning()) {
-                OWRIDEFragment fragment = new OWRIDEFragment();
-                fragmentTransaction.replace(R.id.frame_layout, fragment, "form");
-                fragmentTransaction.addToBackStack(null);
-            }else{
+            if(owrideService.isRunning()) {
                 OWRIDEStatusFragment fragment = new OWRIDEStatusFragment();
                 fragmentTransaction.replace(R.id.frame_layout, fragment, "status");
                 fragmentTransaction.addToBackStack(null);
+            }else{
+                OWRIDEFragment fragment = new OWRIDEFragment();
+                fragmentTransaction.replace(R.id.frame_layout, fragment, "form");
+                fragmentTransaction.addToBackStack(null);
             }
-            //Add Fragment instance to your Activity
             fragmentTransaction.commit();
 
         }
@@ -92,6 +92,7 @@ public class OWRIDEActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    /** Dipanggil saat melakukan pembatalan order **/
     public void cancel() {
         handler.removeCallbacks(runnable);
         owrideService.cancel();
@@ -105,10 +106,12 @@ public class OWRIDEActivity extends AppCompatActivity {
         transaction.commit();
     }
 
+    /** Dipanggil setiap halaman OWRIDEStatusFragment dibuka (saat onStart()) **/
     public void fetchService(){
         handler.postDelayed(runnable, 1);
     }
 
+    /** Background process yang melakukan update progress dan estimasi waktunya dalam setiap milisekon **/
     Runnable runnable = new Runnable() {
         @Override
         public void run() {

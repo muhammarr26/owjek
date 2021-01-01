@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">OW-JEK</string>
+    <string name="title_activity_main">OWJEK</string>
+    <string name="owride_activity_main">OWRIDE</string>
+
+    <string name="from_title">Titik Penjemputan</string>
+    <string name="from_placeholder">Alamat penjemputan</string>
+    <string name="to_title">Titik Tujuan</string>
+    <string name="to_placeholder">Alamat tujuan</string>
+    <string name="distance_title">Jarak</string>
+    <string name="price_title">Total</string>
+    <string name="history">Histori</string>
+
+    <string name="status_owride_1">Menuju tempat penjemputan..</string>
+    <string name="status_owride_2">Menuju tempat tujuan..</string>
+    <string name="status_owride_3">Sampai!</string>
+    <string name="estimated">"estimasi waktu
+%d detik"</string>
+
+    <string name="confirm">Pesan OWRIDE</string>
+    <string name="cancel">Batalkan</string>
+    <string name="confirmation_message">Apa kamu yakin ingin batalkan?</string>
+    <string name="driver_pickup">Driver kamu sudah sampai!</string>
+    <string name="arrive_at_location">Kamu sudah sampai tujuan!
+Terima kasih telah menggunakan jasa OWJEK :)</string>
+
+</resources>

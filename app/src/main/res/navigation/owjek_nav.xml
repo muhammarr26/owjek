@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/owjek_nav"
+    app:startDestination="@id/OWRIDEFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_OWRIDEFragment"
+            app:destination="@id/OWRIDEFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_OWRIDEStatusFragment"
+            app:destination="@id/OWRIDEStatusFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OWRIDEFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.owride.OWRIDEFragment"
+        android:label="owride_fragment"
+        tools:layout="@layout/owride_fragment" >
+        <action
+            android:id="@+id/action_OWRIDEFragment_to_OWRIDEStatusFragment"
+            app:destination="@id/OWRIDEStatusFragment" />
+        <action
+            android:id="@+id/action_OWRIDEFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/OWRIDEStatusFragment"
+        android:name="id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.owride.OWRIDEStatusFragment"
+        android:label="owride_status_fragment"
+        tools:layout="@layout/owride_status_fragment" >
+        <action
+            android:id="@+id/action_OWRIDEStatusFragment_to_OWRIDEFragment"
+            app:destination="@id/OWRIDEFragment" />
+        <action
+            android:id="@+id/action_OWRIDEStatusFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+</navigation>
