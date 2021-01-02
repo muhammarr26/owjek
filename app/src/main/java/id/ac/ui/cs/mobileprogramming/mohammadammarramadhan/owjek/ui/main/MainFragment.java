@@ -1,6 +1,5 @@
 package id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.ui.main;
 
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,24 +8,20 @@ import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiManager;
+import android.opengl.GLSurfaceView;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
-
-import java.util.List;
 
 import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.R;
 import id.ac.ui.cs.mobileprogramming.mohammadammarramadhan.owjek.owride.OWRIDEActivity;
@@ -38,6 +33,7 @@ public class MainFragment extends Fragment {
 
     private boolean isConnected;
     private ConnectivityManager connMgr;
+    private GLSurfaceView gLView;
 
     @Nullable
     @Override
@@ -135,4 +131,6 @@ public class MainFragment extends Fragment {
                 break;
         }
     }
+
+
 }

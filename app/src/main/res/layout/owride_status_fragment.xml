@@ -8,17 +8,30 @@
     android:orientation="vertical"
     tools:context=".owride.OWRIDEStatusFragment">
 
+    <FrameLayout
+        android:id="@+id/owride_opengl"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:layout_marginTop="16dp"
         android:background="@color/design_default_color_background"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/owride_opengl">
 
         <ProgressBar
             android:id="@+id/progress"

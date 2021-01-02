@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -29,6 +30,10 @@ public class OWRIDEStatusFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.owride_status_fragment, container, false);
+
+        OWRIDEOpenGLFragment fragment = new OWRIDEOpenGLFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.owride_opengl, fragment).commit();
 
         // Mengambil instansi OWRIDEViewModel dengan Factory pattern
         OWRIDEViewModel mOWRIDEViewModel = new ViewModelProvider(getActivity()).get(OWRIDEViewModel.class);
